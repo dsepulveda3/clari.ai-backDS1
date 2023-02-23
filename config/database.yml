@@ -1,0 +1,22 @@
+default: &default
+    host: localhost
+    adapter: postgresql
+    encoding: unicode
+    username: postgres
+    password: postgres
+    # username: "clari_next"
+    # password: "Sepulveda091098"
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+    <<: *default
+    database: "clari_next"
+
+test:
+    <<: *default
+    database: clari_test
+
+production:
+    <<: *default
+    host: postgres
+    database: clari_production

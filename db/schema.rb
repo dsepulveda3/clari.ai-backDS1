@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2023_02_21_125919) do
     t.text "feedback"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_feedbacks_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|

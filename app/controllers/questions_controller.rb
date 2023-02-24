@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
     Otherwise, if it is a conceptual question explain in simple terms, detailed, first defining difficult concepts that will be used in the explanation."
     final_prompt = lang == "es" ? pre_prompt_es : pre_prompt_en
     prompt = final_prompt + params[:content]
-    openai_client = OpenAI::Client.new(api_key: "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", default_engine: "text-davinci-003")
+    openai_client = OpenAI::Client.new(api_key: "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", default_engine: "text-davinci-003")
     r = openai_client.completions(
       prompt: prompt,
       max_tokens: 1500,
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   def test
-    openai_client = OpenAI::Client.new(api_key: "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", default_engine: "ada")
+    openai_client = OpenAI::Client.new(api_key: "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", default_engine: "ada")
     render json: {status: :success}
   end
 

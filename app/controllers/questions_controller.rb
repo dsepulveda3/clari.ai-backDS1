@@ -6,6 +6,11 @@ class QuestionsController < ApplicationController
     render json: @questions.to_json()
   end
 
+  def count
+    count = Question.count
+    render json: {'count': count}
+  end
+
   def create
     question = Question.create(content: params[:content])
     lang = params[:lang]

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope '/api' do 
     get '/database', to: 'questions#index'
+    get '/database/count', to: 'questions#count'
     get '/questions/:id', to: 'questions#show'
     post '/questions', to: 'questions#create'
     post '/questions/like', to: 'questions#like'

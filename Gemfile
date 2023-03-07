@@ -32,6 +32,7 @@ gem "uri", "0.10.0"
 gem 'dotenv-rails'
 
 gem 'openai'
+gem "will_paginate"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -2,7 +2,7 @@ require 'openai'
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.order(id: :desc).paginate(page: params[:page], per_page: params[:entries]) 
     render json: @questions.to_json()
   end
 

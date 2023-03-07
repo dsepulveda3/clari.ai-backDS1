@@ -2,8 +2,13 @@ require 'openai'
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @questions = Question.order(id: :desc).paginate(page: params[:page], per_page: params[:entries]) 
     render json: @questions.to_json()
+  end
+
+  def count
+    count = Question.count
+    render json: {'count': count}
   end
 
   def create

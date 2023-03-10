@@ -16,9 +16,17 @@ class QuestionsController < ApplicationController
     lang = params[:lang]
     attempt = params[:attempt]
     pre_prompts_es = ["Si es un ejercicio de matematicas o fisica explique como resolverlo teoricamente, pongame un ejemplo y luego resuelva el ejemplo y la pregunta paso a paso.
-    De lo contrario, si es una pregunta conceptual, explique en términos simples, detallados, definiendo primero los conceptos difíciles que se utilizarán en la explicación. ", "pre prompt 2 es. ", "pre prompt 3 es. "]
+    De lo contrario, si es una pregunta conceptual, explique en términos simples, detallados, definiendo primero los conceptos difíciles que se utilizarán en la explicación. ", 
+    "Si se trata de un ejercicio de matemáticas o física explique cómo resolverlo teóricamente y luego una solución paso a paso, 
+    De lo contrario, si se trata de una pregunta conceptual explique en términos sencillos, detallados. Si es posible, haz una analogía con un ejemplo de la vida real. ", 
+    "Si se trata de un ejercicio de matemáticas o física explique cómo resolverlo teóricamente con un ejemplo divertido de la vida real y luego una solución paso a paso. 
+    De lo contrario, si se trata de una pregunta conceptual Da una explicación detallada con una introducción divertida. "]
     pre_prompts_en = ["If this is a math or physics exercise explain how to solve it theoretically, give me an example and then solve the example and the question step by step.
-    Otherwise, if it is a conceptual question explain in simple terms, detailed, first defining difficult concepts that will be used in the explanation. ", "pre prompt 2 en. ", "pre prompt 3 en. "]
+    Otherwise, if it is a conceptual question explain in simple terms, detailed, first defining difficult concepts that will be used in the explanation. ",
+     "If this is a math or physics exercise explain how to solve it theoretically and then a step-by-step solution.
+      Otherwise, if it is a conceptual question explain in simple terms, detailed. If possible, make an analogy with a real-life example. ",
+     "If this is a math or physics exercise explain how to solve it theoretically with a real-life fun example and then a step-by-step solution. 
+     Otherwise, if it is a conceptual question Give a detailed explanation with a fun introduction. "]
     final_prompt = lang == "es" ? pre_prompts_es[attempt] : pre_prompts_en[attempt]
     prompt = final_prompt + params[:content]
     openai_client = OpenAI::Client.new(api_key: ENV["API_KEY"], default_engine: "text-davinci-003")
